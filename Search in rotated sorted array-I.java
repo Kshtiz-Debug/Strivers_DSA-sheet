@@ -22,40 +22,32 @@ class Solution {
             return mid;
         }
 
-         // so a rotated array has a speciality --> when viewed from a element either of its side is always gonna be sorted 
-         // we will use it to find the solution
+
+
 
         if(nums[mid]>=nums[low]){
-            side=0;   // if side is 0 tht means the left side is sorted 
+            side=0;
         }
         else{
-            side=1;     // if side is 1 tht means the right side is sorted
+            side=1;
         }
 
-
-
-         // now once we know which side is sorted then we will go to next step which is to see if the element k is thr in sorted side or not
-         // if it is thr we will discard the other side otherwise discard the sorted side 
-         
         if(side==0){
             if(nums[mid]>k && nums[low]<=k){
-                high=mid-1;      // So the element k is in the sorted array
+                high=mid-1;
             }
-            else if(nums[mid]>k && nums[low]>=k){
-                low=mid+1;    //  So the element k is not in the sorted array
+            else if(nums[mid]>k && nums[low]>k){
+                low=mid+1;
             }
             else if(nums[mid]<k){
-                low=mid+1;    
+                low=mid+1;
             }
         }
-
-          // same for this 
-          
         else{
             if(nums[mid]>k){
                 high=mid-1;
             }
-            else if(nums[mid]<k && nums[high]<=k){
+            else if(nums[mid]<k && nums[high]<k){
                 high=mid-1;
             }
             else if(nums[mid]<k && nums[high]>=k){
